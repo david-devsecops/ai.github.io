@@ -143,10 +143,10 @@ class PortfolioInteractions {
         if (!typingElement) return;
 
         const texts = [
-            '혁신을 이끌어갑니다',
-            '미래를 설계합니다',
-            '솔루션을 제공합니다',
-            '비즈니스를 변화시킵니다'
+            '전문가입니다',
+            '아키텍트입니다',
+            '엔지니어입니다',
+            '솔루션 전문가입니다'
         ];
         
         let textIndex = 0;
