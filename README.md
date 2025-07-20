@@ -1,4 +1,4 @@
-# David Kim - AI & Cloud Expert Portfolio
+# David Park - AI & Cloud Expert Portfolio
 
 > 🚀 **최첨단 AI와 클라우드 기술 전문가의 포트폴리오 웹사이트**
 
