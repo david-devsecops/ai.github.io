@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News - 박상준 Cloud Engineer</title>
+    <meta name="description" content="클라우드 및 AI 기술 관련 최신 뉴스와 인사이트">
+    <meta name="keywords" content="클라우드, AWS, Azure, GCP, DevOps, AI, 뉴스, 기술 트렌드">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <style>
+        /* News 페이지 전용 스타일 */
+        .news-page {
+            background: var(--bg-primary);
+            min-height: 100vh;
+            padding-top: 120px;
+        }
+
+        .news-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .news-title {
+            font-size: 3rem;
+            font-weight: var(--font-weight-bold);
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .news-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .back-to-home {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: var(--gradient-primary);
+            color: var(--text-white);
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: var(--font-weight-medium);
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            z-index: 1000;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            min-height: 44px;
+            min-width: 44px;
+        }
+
+        .back-to-home:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .news-content {
+            text-align: center;
+            margin-top: var(--spacing-xl);
+            padding: var(--spacing-xl);
+        }
+
+        .placeholder-text {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        /* 모바일 최적화 */
+        @media (max-width: 768px) {
+            .news-title {
+                font-size: 2rem;
+            }
+            
+            .back-to-home {
+                top: 10px;
+                left: 10px;
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 홈으로 돌아가기 버튼 -->
+    <a href="index.html" class="back-to-home" aria-label="홈으로 돌아가기">
+        <i class="fas fa-arrow-left" aria-hidden="true"></i>
+        <span class="sr-only">홈으로 돌아가기</span>
+    </a>
+
+    <!-- 메인 네비게이션 (홈페이지와 동일) -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">박상준</span>
+                <span class="logo-subtitle">Cloud Engineer</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#expertise" class="nav-link">Expertise</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#projects" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="news.html" class="nav-link active">News</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#blog" class="nav-link">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 뉴스 페이지 메인 콘텐츠 -->
+    <main class="news-page">
+        <div class="container">
+            <!-- 페이지 헤더 -->
+            <header class="news-header">
+                <h1 class="news-title">News</h1>
+                <p class="news-subtitle">
+                    최신 소식과 업데이트를 확인하세요
+                </p>
+            </header>
+
+            <!-- 콘텐츠 영역 -->
+            <section class="news-content">
+                <p class="placeholder-text">
+                    이 페이지는 직접 수정하실 수 있습니다.<br>
+                    원하시는 뉴스와 콘텐츠를 추가해주세요.
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        // 기본 네비게이션 기능
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>
