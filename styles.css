@@ -439,7 +439,7 @@ section {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl); /* 여기에 간격 추가 */
 }
 
 .highlight-item {
