@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>온라인 강의 - 박상준 | AWS, Kubernetes, Oracle, Claude Code 실전 교육</title>
+    <meta name="description" content="13년 경력 멀티클라우드 전문가 박상준의 온라인 강의. AWS 마이그레이션, Kubernetes 운영, Oracle DB, Claude Code DevOps 자동화 실전 교육.">
+    <meta name="keywords" content="클라우드 강의, AWS 교육, Kubernetes 강의, Oracle 마이그레이션, Claude Code, DevOps 교육, 박상준">
+    <meta name="author" content="박상준">
+    <link rel="canonical" href="https://david-devsecops.github.io/ai.github.io/courses.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="온라인 강의 - 박상준 | 클라우드 실전 교육">
+    <meta property="og:description" content="13년 경력 멀티클라우드 전문가의 실전 온라인 강의. AWS, Kubernetes, Oracle, Claude Code.">
+    <meta property="og:url" content="https://david-devsecops.github.io/ai.github.io/courses.html">
+    <meta property="og:site_name" content="박상준 Cloud Engineer">
+    <meta property="og:locale" content="ko_KR">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="온라인 강의 - 박상준 | 클라우드 실전 교육">
+    <meta name="twitter:description" content="13년 경력 멀티클라우드 전문가의 실전 온라인 강의.">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "박상준 클라우드 온라인 강의",
+        "description": "13년 경력 멀티클라우드 전문가의 실전 온라인 교육 과정",
+        "url": "https://david-devsecops.github.io/ai.github.io/courses.html",
+        "numberOfItems": 4,
+        "itemListElement": [
+            {"@type": "Course", "name": "AWS 실전 마이그레이션 마스터클래스", "provider": {"@type": "Person", "name": "박상준"}},
+            {"@type": "Course", "name": "Oracle에서 Cloud DB로: 마이그레이션 완벽 가이드", "provider": {"@type": "Person", "name": "박상준"}},
+            {"@type": "Course", "name": "Kubernetes 실전 운영 가이드", "provider": {"@type": "Person", "name": "박상준"}},
+            {"@type": "Course", "name": "Claude Code로 DevOps 자동화", "provider": {"@type": "Person", "name": "박상준"}}
+        ]
+    }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <style>
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        /* Hero */
+        .courses-hero {
+            padding: 8rem 0 4rem;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 50%, #667eea 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .courses-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 40%, rgba(255,255,255,0.12) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .courses-hero-content { position: relative; z-index: 2; }
+        .courses-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.35);
+            color: #fff;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(6px);
+        }
+        .courses-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        .courses-hero p {
+            font-size: 1.15rem;
+            opacity: 0.95;
+            max-width: 650px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+        .hero-stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        .hero-stat { text-align: center; }
+        .hero-stat-num { font-size: 1.75rem; font-weight: 700; display: block; }
+        .hero-stat-label { font-size: 0.8rem; opacity: 0.85; }
+
+        /* Course Cards */
+        .courses-section { padding: 5rem 0; background: var(--bg-primary); }
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .course-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border: 1px solid var(--border-light);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .course-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-color: #667eea; }
+        .course-banner {
+            height: 160px;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding: 1.25rem;
+        }
+        .banner-blue { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .banner-orange { background: linear-gradient(135deg, #f7971e, #ffd200); }
+        .banner-green { background: linear-gradient(135deg, #11998e, #38ef7d); }
+        .banner-cyan { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+        .course-banner .course-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255,255,255,0.25);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+        .course-banner .course-icon i { font-size: 1.3rem; color: white; }
+        .course-level-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255,255,255,0.92);
+            color: var(--text-primary);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .course-body {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .course-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .course-meta span {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .course-meta i { font-size: 0.75rem; }
+        .course-body h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+        .course-body p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.65;
+            flex: 1;
+            margin-bottom: 1rem;
+        }
+        .course-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1.25rem;
+        }
+        .course-topic {
+            padding: 3px 10px;
+            background: var(--bg-secondary);
+            color: var(--text-light);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .course-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-light);
+        }
+        .course-price { font-size: 1rem; font-weight: 700; color: #667eea; }
+        .course-cta {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .course-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(102,126,234,0.4); }
+
+        /* Instructor */
+        .instructor-section { padding: 5rem 0; background: var(--bg-secondary); }
+        .instructor-card {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        .instructor-photo {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            color: white;
+        }
+        .instructor-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+            font-size: 3rem;
+        }
+        .instructor-photo h3 { font-size: 1.4rem; margin-bottom: 0.25rem; color: white; }
+        .instructor-photo p { opacity: 0.9; font-size: 0.9rem; }
+        .instructor-details h3 { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem; }
+        .instructor-details > p { color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem; }
+        .credentials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        .credential-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .credential-item i { font-size: 1.5rem; color: #667eea; margin-bottom: 0.5rem; display: block; }
+        .credential-item .cred-num { font-size: 1.3rem; font-weight: 700; color: var(--text-primary); display: block; }
+        .credential-item .cred-label { font-size: 0.8rem; color: var(--text-light); }
+
+        /* FAQ */
+        .faq-section { padding: 5rem 0; background: var(--bg-primary); }
+        .faq-list { max-width: 800px; margin: 3rem auto 0; }
+        .faq-item {
+            background: var(--bg-card);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-light);
+            overflow: hidden;
+        }
+        .faq-question {
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        .faq-question:hover { background: var(--bg-secondary); }
+        .faq-question i { color: #667eea; transition: transform 0.3s; font-size: 0.85rem; }
+        .faq-question.active i { transform: rotate(180deg); }
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .faq-answer.active {
+            padding: 0 1.5rem 1.25rem;
+            max-height: 300px;
+        }
+        .faq-answer p { color: var(--text-secondary); line-height: 1.7; font-size: 0.95rem; }
+
+        /* Newsletter */
+        .newsletter-section {
+            background: var(--bg-secondary);
+            padding: 3rem 0;
+            border-top: 1px solid #e2e8f0;
+        }
+        .newsletter-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        .newsletter-text h3 { font-size: 1.3rem; color: var(--text-primary); margin-bottom: 0.5rem; }
+        .newsletter-text h3 i { color: #667eea; margin-right: 0.5rem; }
+        .newsletter-text p { color: var(--text-secondary); font-size: 0.95rem; }
+        .newsletter-form {
+            display: flex;
+            gap: 0.75rem;
+            flex-shrink: 0;
+        }
+        .newsletter-form input[type="email"] {
+            padding: 0.75rem 1.25rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            width: 280px;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+        .newsletter-form input[type="email"]:focus { outline: none; border-color: #667eea; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .courses-grid { grid-template-columns: 1fr; max-width: 550px; margin-left: auto; margin-right: auto; }
+            .instructor-card { grid-template-columns: 1fr; }
+            .instructor-photo { max-width: 350px; margin: 0 auto; }
+            .credentials-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .courses-hero h1 { font-size: 2rem; }
+            .nav-container { padding: 0 1rem; }
+            .hero-stats-bar { gap: 1.5rem; }
+            .credentials-grid { grid-template-columns: 1fr 1fr; }
+            .newsletter-content { flex-direction: column; text-align: center; }
+            .newsletter-form { flex-direction: column; width: 100%; }
+            .newsletter-form input[type="email"] { width: 100%; }
+        }
+        @media (max-width: 480px) {
+            .nav-container { padding: 0 0.5rem; }
+            .courses-hero h1 { font-size: 1.7rem; }
+            .credentials-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">박상준</span>
+                <span class="logo-subtitle">Cloud Engineer</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="index.html#expertise" class="nav-link">Expertise</a></li>
+                <li class="nav-item"><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="consulting.html" class="nav-link">Consulting</a></li>
+                <li class="nav-item"><a href="courses.html" class="nav-link active">Courses</a></li>
+                <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="courses-hero">
+        <div class="container courses-hero-content">
+            <div class="courses-hero-badge">
+                <i class="fas fa-graduation-cap"></i> 온라인 강의
+            </div>
+            <h1>실무 전문가에게 배우는<br>클라우드 기술</h1>
+            <p>13년 엔터프라이즈 클라우드 현장 경험과 IT 강사 경력을 바탕으로,
+               이론이 아닌 실전에서 바로 활용할 수 있는 기술을 가르칩니다.</p>
+            <div class="hero-stats-bar">
+                <div class="hero-stat">
+                    <span class="hero-stat-num">13년+</span>
+                    <span class="hero-stat-label">실무 경력</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-num">9개</span>
+                    <span class="hero-stat-label">자격증</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-num">30+</span>
+                    <span class="hero-stat-label">프로젝트</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-num">강사</span>
+                    <span class="hero-stat-label">IHD 교육 경력</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Cards -->
+    <section class="courses-section">
+        <div class="container">
+            <div style="text-align:center;margin-bottom:1rem;">
+                <h2 style="font-size:2rem;font-weight:700;color:var(--text-primary);margin-bottom:0.75rem;">강의 목록</h2>
+                <p style="color:var(--text-secondary);font-size:1.05rem;">실제 프로젝트 경험에서 추출한 핵심 노하우를 전달합니다</p>
+            </div>
+            <div class="courses-grid">
+                <!-- Course 1 -->
+                <div class="course-card">
+                    <div class="course-banner banner-blue">
+                        <div class="course-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                        <span class="course-level-badge">중급</span>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 약 20시간</span>
+                            <span><i class="fas fa-book"></i> 40강</span>
+                            <span><i class="fas fa-users"></i> SA/DevOps 엔지니어</span>
+                        </div>
+                        <h3>AWS 실전 마이그레이션 마스터클래스</h3>
+                        <p>아모레퍼시픽, SKT 등 실제 대기업 마이그레이션 경험을 바탕으로 On-Premise에서 AWS로의 전환 전략, VPC 설계, EC2/RDS/S3 구성, CloudFront, Route53, 마이그레이션 도구 활용법을 단계별로 학습합니다.</p>
+                        <div class="course-topics">
+                            <span class="course-topic">VPC</span>
+                            <span class="course-topic">EC2</span>
+                            <span class="course-topic">RDS</span>
+                            <span class="course-topic">S3</span>
+                            <span class="course-topic">CloudFront</span>
+                            <span class="course-topic">7R Strategy</span>
+                        </div>
+                        <div class="course-footer">
+                            <span class="course-price">준비 중</span>
+                            <a href="index.html#contact" class="course-cta">사전 등록</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="course-card">
+                    <div class="course-banner banner-orange">
+                        <div class="course-icon"><i class="fas fa-database"></i></div>
+                        <span class="course-level-badge">중급/고급</span>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 약 15시간</span>
+                            <span><i class="fas fa-book"></i> 30강</span>
+                            <span><i class="fas fa-users"></i> DBA/인프라 엔지니어</span>
+                        </div>
+                        <h3>Oracle에서 Cloud DB로: 마이그레이션 완벽 가이드</h3>
+                        <p>13년 Oracle 경험과 OCP 자격을 기반으로 Oracle RAC/ASM 환경에서 AWS RDS, Aurora, GCP Cloud SQL로의 마이그레이션 전 과정을 다룹니다. DMS 활용, 스키마 변환, 성능 튜닝까지.</p>
+                        <div class="course-topics">
+                            <span class="course-topic">Oracle RAC</span>
+                            <span class="course-topic">ASM</span>
+                            <span class="course-topic">AWS DMS</span>
+                            <span class="course-topic">Aurora</span>
+                            <span class="course-topic">Cloud SQL</span>
+                        </div>
+                        <div class="course-footer">
+                            <span class="course-price">준비 중</span>
+                            <a href="index.html#contact" class="course-cta">사전 등록</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="course-card">
+                    <div class="course-banner banner-green">
+                        <div class="course-icon"><i class="fas fa-dharmachakra"></i></div>
+                        <span class="course-level-badge">중급</span>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 약 18시간</span>
+                            <span><i class="fas fa-book"></i> 35강</span>
+                            <span><i class="fas fa-users"></i> DevOps 엔지니어</span>
+                        </div>
+                        <h3>Kubernetes 실전 운영 가이드</h3>
+                        <p>한국은행 CBDC, MOIM 메타버스 등 프로덕션 환경에서 Kubernetes를 운영한 경험을 바탕으로 클러스터 설계, Helm 차트, 모니터링, 보안, 오토스케일링, 트러블슈팅을 실습합니다.</p>
+                        <div class="course-topics">
+                            <span class="course-topic">K8s Cluster</span>
+                            <span class="course-topic">Helm</span>
+                            <span class="course-topic">Monitoring</span>
+                            <span class="course-topic">RBAC</span>
+                            <span class="course-topic">HPA</span>
+                        </div>
+                        <div class="course-footer">
+                            <span class="course-price">준비 중</span>
+                            <a href="index.html#contact" class="course-cta">사전 등록</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 4 -->
+                <div class="course-card">
+                    <div class="course-banner banner-cyan">
+                        <div class="course-icon"><i class="fas fa-robot"></i></div>
+                        <span class="course-level-badge">초급/중급</span>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 약 10시간</span>
+                            <span><i class="fas fa-book"></i> 20강</span>
+                            <span><i class="fas fa-users"></i> 개발자/DevOps</span>
+                        </div>
+                        <h3>Claude Code로 DevOps 자동화</h3>
+                        <p>Claude Code in Action 인증 보유자로서, Claude Code를 활용한 Terraform 코드 생성, 셸 스크립트 자동화, CI/CD 파이프라인 구성, 인프라 문서화 자동화까지 AI 기반 DevOps를 실습합니다.</p>
+                        <div class="course-topics">
+                            <span class="course-topic">Claude Code</span>
+                            <span class="course-topic">Terraform</span>
+                            <span class="course-topic">CI/CD</span>
+                            <span class="course-topic">Shell</span>
+                            <span class="course-topic">AI Automation</span>
+                        </div>
+                        <div class="course-footer">
+                            <span class="course-price">준비 중</span>
+                            <a href="index.html#contact" class="course-cta">사전 등록</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructor -->
+    <section class="instructor-section">
+        <div class="container">
+            <div style="text-align:center;">
+                <h2 style="font-size:2rem;font-weight:700;color:var(--text-primary);margin-bottom:0.75rem;">강사 소개</h2>
+                <p style="color:var(--text-secondary);font-size:1.05rem;">실무와 교육 경험을 겸비한 전문가</p>
+            </div>
+            <div class="instructor-card">
+                <div class="instructor-photo">
+                    <div class="instructor-avatar"><i class="fas fa-user-tie"></i></div>
+                    <h3>박상준</h3>
+                    <p>Senior Cloud Engineer<br>Solution Architect</p>
+                </div>
+                <div class="instructor-details">
+                    <h3>왜 이 강의를 들어야 하나요?</h3>
+                    <p>교과서적인 이론이 아닌, 한국은행 CBDC, 아모레퍼시픽 마이그레이션, SKT 인프라 구축 등 실제 대기업 프로젝트에서 겪은 문제와 해결 과정을 그대로 전달합니다. 한국정보통신인력센터(IHD)에서 유닉스 서버 관리자 과정 강사로 활동한 교육 경험을 바탕으로, 복잡한 기술을 이해하기 쉽게 설명합니다.</p>
+                    <div class="credentials-grid">
+                        <div class="credential-item">
+                            <i class="fas fa-briefcase"></i>
+                            <span class="cred-num">13년+</span>
+                            <span class="cred-label">실무 경력</span>
+                        </div>
+                        <div class="credential-item">
+                            <i class="fas fa-certificate"></i>
+                            <span class="cred-num">9개</span>
+                            <span class="cred-label">자격증</span>
+                        </div>
+                        <div class="credential-item">
+                            <i class="fas fa-project-diagram"></i>
+                            <span class="cred-num">30+</span>
+                            <span class="cred-label">프로젝트</span>
+                        </div>
+                        <div class="credential-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span class="cred-num">4.0/4.0</span>
+                            <span class="cred-label">석사 GPA</span>
+                        </div>
+                        <div class="credential-item">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span class="cred-num">IHD</span>
+                            <span class="cred-label">강사 경험</span>
+                        </div>
+                        <div class="credential-item">
+                            <i class="fas fa-building"></i>
+                            <span class="cred-num">대기업</span>
+                            <span class="cred-label">프로젝트 다수</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <div style="text-align:center;">
+                <h2 style="font-size:2rem;font-weight:700;color:var(--text-primary);margin-bottom:0.75rem;">자주 묻는 질문</h2>
+                <p style="color:var(--text-secondary);font-size:1.05rem;">강의에 대해 궁금한 점을 확인하세요</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        강의 수준은 어떤가요? 초보자도 수강 가능한가요?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>각 강의마다 난이도가 표시되어 있습니다. "Claude Code로 DevOps 자동화"는 초급부터 시작 가능하며, AWS 마이그레이션과 Kubernetes는 기본적인 클라우드/리눅스 지식이 있으면 수강 가능합니다. Oracle 마이그레이션은 DB 운영 경험이 있는 분을 대상으로 합니다.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        실습 환경은 어떻게 구성하나요?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>각 강의에서 AWS Free Tier, GCP 무료 크레딧 등을 활용한 실습 가이드를 제공합니다. 별도의 고가 장비나 라이선스 없이도 실습이 가능하도록 구성했습니다.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        수강 기간 제한이 있나요?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>한번 구매하면 무제한으로 수강 가능합니다. 업데이트된 콘텐츠도 추가 비용 없이 제공됩니다.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        질문이 있을 때는 어떻게 하나요?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>각 강의 커뮤니티를 통해 질문하실 수 있으며, 직접 답변드립니다. 복잡한 아키텍처 관련 질문은 별도 컨설팅으로 연결해드릴 수도 있습니다.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        강의 런칭은 언제인가요?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>현재 콘텐츠 제작 중입니다. 사전 등록을 하시면 런칭 시 할인 혜택과 함께 가장 먼저 알려드립니다. 아래 뉴스레터를 구독하시면 진행 상황도 받아보실 수 있습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h3><i class="fas fa-paper-plane"></i> 클라우드 인사이트 뉴스레터</h3>
+                    <p>강의 런칭 소식과 매주 실무 인사이트를 받아보세요.</p>
+                </div>
+                <form class="newsletter-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <input type="email" name="email" placeholder="이메일 주소를 입력하세요" required>
+                    <button type="submit" class="btn btn-primary">구독하기</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">박상준</span>
+                    <p class="footer-description">멀티클라우드 전문성으로 엔터프라이즈 인프라의 미래를 설계합니다</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>빠른 링크</h4>
+                        <ul>
+                            <li><a href="index.html">홈</a></li>
+                            <li><a href="index.html#about">소개</a></li>
+                            <li><a href="index.html#expertise">전문분야</a></li>
+                            <li><a href="index.html#projects">프로젝트</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>서비스</h4>
+                        <ul>
+                            <li><a href="consulting.html">클라우드 컨설팅</a></li>
+                            <li><a href="courses.html">온라인 강의</a></li>
+                            <li><a href="blog.html">기술 블로그</a></li>
+                            <li><a href="index.html#contact">문의하기</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>소셜 미디어</h4>
+                        <div class="social-links">
+                            <a href="mailto:golreas@naver.com" class="social-link"><i class="fas fa-envelope"></i></a>
+                            <a href="tel:010-7413-5650" class="social-link"><i class="fas fa-phone"></i></a>
+                            <a href="https://www.threads.com/@musma_ai" class="social-link" target="_blank" rel="noopener"><i class="fab fa-threads"></i></a>
+                            <a href="blog.html" class="social-link"><i class="fas fa-blog"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 박상준. All rights reserved. | <a href="consulting.html">컨설팅</a> | <a href="courses.html">강의</a> | <a href="blog.html">블로그</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="back-to-top"><i class="fas fa-chevron-up"></i></button>
+
+    <script>
+        // Navigation
+        (function() {
+            var navbar = document.getElementById('navbar');
+            var hamburger = document.getElementById('hamburger');
+            var navMenu = document.getElementById('nav-menu');
+            var backToTop = document.getElementById('back-to-top');
+
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    navbar.classList.add('scrolled');
+                    backToTop.classList.add('visible');
+                } else {
+                    navbar.classList.remove('scrolled');
+                    backToTop.classList.remove('visible');
+                }
+            });
+
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            document.querySelectorAll('.nav-link').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            backToTop.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        })();
+
+        // FAQ Toggle
+        function toggleFaq(el) {
+            var answer = el.nextElementSibling;
+            var isActive = el.classList.contains('active');
+
+            // Close all
+            document.querySelectorAll('.faq-question').forEach(function(q) {
+                q.classList.remove('active');
+                q.nextElementSibling.classList.remove('active');
+            });
+
+            // Open clicked
+            if (!isActive) {
+                el.classList.add('active');
+                answer.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -3,115 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News - 박상준 Cloud Engineer</title>
-    <meta name="description" content="클라우드 및 AI 기술 관련 최신 뉴스와 인사이트">
-    <meta name="keywords" content="클라우드, AWS, Azure, GCP, DevOps, AI, 뉴스, 기술 트렌드">
-    
-    <!-- Fonts -->
+    <title>News - 박상준 Cloud Engineer | 최신 소식</title>
+    <meta name="description" content="클라우드 엔지니어 박상준의 최신 프로젝트 소식, 자격증 취득, 기술 동향 업데이트">
+    <meta name="keywords" content="클라우드, AWS, Azure, GCP, DevOps, AI, 뉴스, 기술 트렌드, 박상준">
+    <link rel="canonical" href="https://david-devsecops.github.io/ai.github.io/news.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="News - 박상준 Cloud Engineer">
+    <meta property="og:description" content="클라우드 엔지니어 박상준의 최신 소식과 업데이트">
+    <meta property="og:url" content="https://david-devsecops.github.io/ai.github.io/news.html">
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
-    
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    
+
     <style>
-        /* News 페이지 전용 스타일 */
-        .news-page {
-            background: var(--bg-primary);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-
-        .news-header {
+        .news-page-hero {
+            padding: 8rem 0 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
             text-align: center;
-            margin-bottom: var(--spacing-xl);
         }
-
-        .news-title {
+        .news-page-hero h1 {
             font-size: 3rem;
-            font-weight: var(--font-weight-bold);
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: var(--spacing-md);
+            font-weight: 700;
+            margin-bottom: 1rem;
         }
-
-        .news-subtitle {
+        .news-page-hero p {
             font-size: 1.25rem;
-            color: var(--text-light);
+            opacity: 0.9;
             max-width: 600px;
             margin: 0 auto;
-            line-height: 1.6;
         }
-
-        .back-to-home {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: var(--gradient-primary);
-            color: var(--text-white);
-            padding: 0.75rem 1rem;
-            border: none;
-            border-radius: var(--radius-md);
-            font-weight: var(--font-weight-medium);
-            cursor: pointer;
-            transition: all var(--transition-normal);
-            z-index: 1000;
-            text-decoration: none;
-            display: inline-flex;
+        .news-timeline {
+            padding: 4rem 0;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .news-year {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #667eea;
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #667eea;
+        }
+        .timeline-item {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .timeline-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+        }
+        .timeline-meta {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: var(--spacing-sm);
-            min-height: 44px;
-            min-width: 44px;
+            margin-bottom: 0.75rem;
         }
-
-        .back-to-home:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
+        .timeline-date {
+            font-size: 0.875rem;
+            color: #718096;
+            font-weight: 500;
         }
-
-        .news-content {
-            text-align: center;
-            margin-top: var(--spacing-xl);
-            padding: var(--spacing-xl);
+        .timeline-category {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
         }
-
-        .placeholder-text {
-            font-size: 1.125rem;
-            color: var(--text-light);
-            margin-bottom: var(--spacing-lg);
+        .timeline-item h3 {
+            font-size: 1.2rem;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
         }
-
-        /* 모바일 최적화 */
+        .timeline-item p {
+            color: #4a5568;
+            line-height: 1.7;
+            margin: 0;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
         @media (max-width: 768px) {
-            .news-title {
-                font-size: 2rem;
-            }
-            
-            .back-to-home {
-                top: 10px;
-                left: 10px;
-                padding: 0.5rem;
-            }
+            .news-page-hero h1 { font-size: 2rem; }
+            .nav-container { padding: 0 1rem; }
+            .timeline-item { padding: 1rem 1.5rem; }
         }
     </style>
 </head>
 <body>
-    <!-- 홈으로 돌아가기 버튼 -->
-    <a href="index.html" class="back-to-home" aria-label="홈으로 돌아가기">
-        <i class="fas fa-arrow-left" aria-hidden="true"></i>
-        <span class="sr-only">홈으로 돌아가기</span>
-    </a>
-
-    <!-- 메인 네비게이션 (홈페이지와 동일) -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
@@ -119,27 +116,14 @@
                 <span class="logo-subtitle">Cloud Engineer</span>
             </div>
             <ul class="nav-menu" id="nav-menu">
-                <li class="nav-item">
-                    <a href="index.html#home" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="index.html#about" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="index.html#expertise" class="nav-link">Expertise</a>
-                </li>
-                <li class="nav-item">
-                    <a href="index.html#projects" class="nav-link">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a href="news.html" class="nav-link active">News</a>
-                </li>
-                <li class="nav-item">
-                    <a href="index.html#blog" class="nav-link">Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a href="index.html#contact" class="nav-link">Contact</a>
-                </li>
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="index.html#expertise" class="nav-link">Expertise</a></li>
+                <li class="nav-item"><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="consulting.html" class="nav-link">Consulting</a></li>
+                <li class="nav-item"><a href="courses.html" class="nav-link">Courses</a></li>
+                <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
                 <span class="bar"></span>
@@ -149,33 +133,137 @@
         </div>
     </nav>
 
-    <!-- 뉴스 페이지 메인 콘텐츠 -->
-    <main class="news-page">
+    <section class="news-page-hero">
         <div class="container">
-            <!-- 페이지 헤더 -->
-            <header class="news-header">
-                <h1 class="news-title">News</h1>
-                <p class="news-subtitle">
-                    최신 소식과 업데이트를 확인하세요
-                </p>
-            </header>
-
-            <!-- 콘텐츠 영역 -->
-            <section class="news-content">
-                <p class="placeholder-text">
-                    이 페이지는 직접 수정하실 수 있습니다.<br>
-                    원하시는 뉴스와 콘텐츠를 추가해주세요.
-                </p>
-            </section>
+            <h1><i class="fas fa-newspaper"></i> News & Updates</h1>
+            <p>프로젝트 진행 소식, 자격증 취득, 기술 동향 업데이트를 확인하세요</p>
         </div>
+    </section>
+
+    <main class="news-timeline container">
+        <h2 class="news-year">2025</h2>
+
+        <article class="timeline-item">
+            <div class="timeline-meta">
+                <span class="timeline-date">2025년 8월</span>
+                <span class="timeline-category">자격증</span>
+            </div>
+            <h3>Claude Code in Action 인증 취득</h3>
+            <p>Anthropic의 Claude Code in Action 인증을 취득했습니다. AI 기반 개발 도구를 활용한 DevOps 자동화 및 인프라 관리 역량을 공식적으로 인증받았습니다.</p>
+        </article>
+
+        <article class="timeline-item">
+            <div class="timeline-meta">
+                <span class="timeline-date">2025년 7월</span>
+                <span class="timeline-category">프로젝트</span>
+            </div>
+            <h3>한국은행 CBDC 활용성 테스트 인프라 구축 완료</h3>
+            <p>중앙은행 디지털화폐(CBDC) 활용성 테스트를 위한 클라우드 인프라 구축 프로젝트를 성공적으로 완료했습니다. AWS 기반 Kubernetes 클러스터와 Terraform을 활용한 IaC 환경을 구축하여 안정적인 테스트 인프라를 제공했습니다.</p>
+        </article>
+
+        <article class="timeline-item">
+            <div class="timeline-meta">
+                <span class="timeline-date">2025년 6월</span>
+                <span class="timeline-category">학술</span>
+            </div>
+            <h3>서울과학종합대학원 AI빅데이터학과 석사과정 수료 예정</h3>
+            <p>AI빅데이터학과 석사과정을 GPA 4.0/4.0으로 수료 예정입니다. "클라우드 네이티브 환경에서의 AI 인프라 최적화" 연구를 진행하고 있습니다.</p>
+        </article>
+
+        <article class="timeline-item">
+            <div class="timeline-meta">
+                <span class="timeline-date">2025년 2월</span>
+                <span class="timeline-category">서비스</span>
+            </div>
+            <h3>클라우드 컨설팅 서비스 런칭</h3>
+            <p>13년의 멀티클라우드 경험을 바탕으로 클라우드 마이그레이션, 아키텍처 설계, DevOps 파이프라인 구축 컨설팅 서비스를 공식 런칭했습니다. 무료 30분 상담을 통해 최적의 클라우드 전략을 제안합니다.</p>
+        </article>
+
+        <h2 class="news-year">2024</h2>
+
+        <article class="timeline-item">
+            <div class="timeline-meta">
+                <span class="timeline-date">2024년 9월</span>
+                <span class="timeline-category">프로젝트</span>
+            </div>
+            <h3>한국은행 CBDC 인프라 프로젝트 착수</h3>
+            <p>엘퍼스트를 통해 한국은행 중앙은행 디지털화폐(CBDC) 활용성 테스트 인프라 구축 프로젝트에 클라우드 아키텍트로 참여했습니다.</p>
+        </article>
+
+        <article class="timeline-item">
+            <div class="timeline-meta">
+                <span class="timeline-date">2024년 3월</span>
+                <span class="timeline-category">학술</span>
+            </div>
+            <h3>서울과학종합대학원 AI빅데이터학과 석사과정 입학</h3>
+            <p>클라우드 인프라 경험과 AI 기술을 결합한 차세대 솔루션 연구를 위해 석사과정에 입학했습니다.</p>
+        </article>
+
+        <article class="timeline-item">
+            <div class="timeline-meta">
+                <span class="timeline-date">2023년 5월</span>
+                <span class="timeline-category">자격증</span>
+            </div>
+            <h3>AWS Solution Architect Associate 취득</h3>
+            <p>아모레퍼시픽 AWS 마이그레이션 프로젝트를 수행하며 AWS Solution Architect Associate 자격증을 취득했습니다.</p>
+        </article>
+
+        <article class="timeline-item">
+            <div class="timeline-meta">
+                <span class="timeline-date">2023년 1월</span>
+                <span class="timeline-category">프로젝트</span>
+            </div>
+            <h3>아모레퍼시픽 On-Premise to AWS 마이그레이션 착수</h3>
+            <p>우나프론트에서 아모레퍼시픽의 On-Premise 환경을 AWS로 전환하는 대규모 마이그레이션 프로젝트에 SA(Solution Architect) 역할로 참여했습니다.</p>
+        </article>
     </main>
 
-    <!-- JavaScript -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">박상준</span>
+                    <p class="footer-description">멀티클라우드 전문성으로 엔터프라이즈 인프라의 미래를 설계합니다</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>바로가기</h4>
+                        <ul>
+                            <li><a href="index.html">홈</a></li>
+                            <li><a href="index.html#about">소개</a></li>
+                            <li><a href="index.html#expertise">전문분야</a></li>
+                            <li><a href="index.html#projects">프로젝트</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>서비스</h4>
+                        <ul>
+                            <li><a href="consulting.html">클라우드 컨설팅</a></li>
+                            <li><a href="courses.html">온라인 강의</a></li>
+                            <li><a href="blog.html">기술 블로그</a></li>
+                            <li><a href="index.html#contact">문의하기</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>소셜 미디어</h4>
+                        <div class="social-links">
+                            <a href="mailto:golreas@naver.com" class="social-link"><i class="fas fa-envelope"></i></a>
+                            <a href="tel:010-7413-5650" class="social-link"><i class="fas fa-phone"></i></a>
+                            <a href="https://www.threads.com/@musma_ai" class="social-link" target="_blank" rel="noopener"><i class="fab fa-threads"></i></a>
+                            <a href="blog.html" class="social-link"><i class="fas fa-blog"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 박상준. All rights reserved. | <a href="consulting.html">컨설팅</a> | <a href="courses.html">강의</a> | <a href="blog.html">블로그</a></p>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        // 기본 네비게이션 기능
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('nav-menu');
-
         if (hamburger && navMenu) {
             hamburger.addEventListener('click', () => {
                 hamburger.classList.toggle('active');

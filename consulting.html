@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>클라우드 컨설팅 - 박상준 | 마이그레이션, 아키텍처 설계, DevOps</title>
+    <meta name="description" content="13년 경력 멀티클라우드 전문가 박상준의 클라우드 컨설팅. AWS/Azure/GCP 마이그레이션, 아키텍처 설계, DevOps 파이프라인 구축. 한국은행, 아모레퍼시픽, SKT 프로젝트 경험.">
+    <meta name="keywords" content="클라우드 컨설팅, AWS 마이그레이션, 멀티클라우드 아키텍처, DevOps, Oracle 마이그레이션, 박상준">
+    <meta name="author" content="박상준">
+    <link rel="canonical" href="https://david-devsecops.github.io/ai.github.io/consulting.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="클라우드 컨설팅 - 박상준 멀티클라우드 전문가">
+    <meta property="og:description" content="13년 경력의 멀티클라우드 전문가에게 AWS/Azure/GCP 마이그레이션, 아키텍처 설계, DevOps 컨설팅을 받아보세요.">
+    <meta property="og:url" content="https://david-devsecops.github.io/ai.github.io/consulting.html">
+    <meta property="og:site_name" content="박상준 Cloud Engineer">
+    <meta property="og:locale" content="ko_KR">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="클라우드 컨설팅 - 박상준 멀티클라우드 전문가">
+    <meta name="twitter:description" content="13년 경력 멀티클라우드 전문가의 클라우드 컨설팅 서비스.">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "박상준 클라우드 컨설팅",
+        "description": "멀티클라우드 아키텍처 설계, 마이그레이션, DevOps 컨설팅 서비스",
+        "url": "https://david-devsecops.github.io/ai.github.io/consulting.html",
+        "provider": {"@type": "Person", "name": "박상준", "jobTitle": "Senior Cloud Engineer"},
+        "areaServed": "KR",
+        "serviceType": ["Cloud Consulting", "Cloud Migration", "DevOps", "Architecture Design"]
+    }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <style>
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        /* Hero */
+        .consult-hero {
+            padding: 8rem 0 4rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 60%, #f093fb 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .consult-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(255,255,255,0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .consult-hero-content { position: relative; z-index: 2; }
+        .consult-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.35);
+            color: #fff;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(6px);
+        }
+        .consult-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        .consult-hero p {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            max-width: 650px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+        .hero-cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-white {
+            background: white;
+            color: #667eea;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+        .btn-ghost {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.6);
+            padding: 12px 26px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+        .btn-ghost:hover { background: rgba(255,255,255,0.15); border-color: white; }
+
+        /* Services */
+        .services-section { padding: 5rem 0; background: var(--bg-primary); }
+        .services-section .section-header { text-align: center; margin-bottom: 3rem; }
+        .services-section .section-title { font-size: 2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.75rem; }
+        .services-section .section-subtitle { color: var(--text-secondary); font-size: 1.05rem; }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        .service-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border: 1px solid var(--border-light);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-color: #667eea; }
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 1.25rem;
+        }
+        .icon-blue { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .icon-green { background: linear-gradient(135deg, #11998e, #38ef7d); }
+        .icon-orange { background: linear-gradient(135deg, #f7971e, #ffd200); }
+        .icon-pink { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .service-card h3 { font-size: 1.25rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.75rem; }
+        .service-card p { color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem; font-size: 0.95rem; }
+        .service-features { list-style: none; padding: 0; margin: 0; }
+        .service-features li {
+            padding: 6px 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .service-features li i { color: #667eea; font-size: 0.8rem; }
+        .service-ref {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-light);
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+        .service-ref strong { color: #667eea; }
+
+        /* Process */
+        .process-section { padding: 5rem 0; background: var(--bg-secondary); }
+        .process-steps {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+        .process-step {
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+            max-width: 200px;
+            position: relative;
+            padding: 0 1rem;
+        }
+        .process-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 28px;
+            right: -10px;
+            width: 20px;
+            height: 2px;
+            background: #667eea;
+        }
+        .step-number {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+        .process-step h4 { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem; }
+        .process-step p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
+
+        /* Clients */
+        .clients-section { padding: 4rem 0; background: var(--bg-primary); text-align: center; }
+        .clients-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .client-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 1.25rem 2rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        .client-item:hover { border-color: #667eea; color: #667eea; transform: translateY(-2px); }
+        .client-item i { margin-right: 0.5rem; color: #667eea; }
+
+        /* Pricing */
+        .pricing-section { padding: 5rem 0; background: var(--bg-secondary); }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .pricing-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border: 2px solid var(--border-light);
+            transition: all 0.3s;
+            position: relative;
+        }
+        .pricing-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .pricing-card.featured {
+            border-color: #667eea;
+            transform: scale(1.03);
+        }
+        .pricing-card.featured:hover { transform: scale(1.03) translateY(-5px); }
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .pricing-card h3 { font-size: 1.3rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; }
+        .pricing-card .price { font-size: 1.1rem; color: #667eea; font-weight: 600; margin-bottom: 1.5rem; }
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 2rem;
+            text-align: left;
+        }
+        .pricing-features li {
+            padding: 8px 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .pricing-features li:last-child { border-bottom: none; }
+        .pricing-features li i { color: #667eea; font-size: 0.85rem; width: 16px; }
+
+        /* Contact */
+        .consult-contact { padding: 5rem 0; background: var(--bg-primary); }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        .contact-info-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            padding: 2.5rem;
+            color: white;
+        }
+        .contact-info-card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: white; }
+        .contact-info-card p { opacity: 0.9; line-height: 1.7; margin-bottom: 2rem; }
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+        .contact-info-item i { font-size: 1.1rem; width: 20px; text-align: center; }
+        .contact-info-item span { font-size: 0.95rem; }
+        .consult-form {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .consult-form h3 { font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--text-primary); }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .consult-form input,
+        .consult-form select,
+        .consult-form textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: border-color 0.3s;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            box-sizing: border-box;
+        }
+        .consult-form input:focus,
+        .consult-form select:focus,
+        .consult-form textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .consult-form .form-group { margin-bottom: 1rem; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .services-grid { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+            .pricing-card.featured { transform: none; }
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .consult-hero h1 { font-size: 2rem; }
+            .nav-container { padding: 0 1rem; }
+            .process-step:not(:last-child)::after { display: none; }
+            .process-steps { gap: 1.5rem; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 480px) {
+            .nav-container { padding: 0 0.5rem; }
+            .consult-hero h1 { font-size: 1.7rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">박상준</span>
+                <span class="logo-subtitle">Cloud Engineer</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="index.html#expertise" class="nav-link">Expertise</a></li>
+                <li class="nav-item"><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="consulting.html" class="nav-link active">Consulting</a></li>
+                <li class="nav-item"><a href="courses.html" class="nav-link">Courses</a></li>
+                <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="consult-hero">
+        <div class="container consult-hero-content">
+            <div class="consult-hero-badge">
+                <i class="fas fa-handshake"></i> 클라우드 컨설팅
+            </div>
+            <h1>13년 경력의 멀티클라우드 전문가에게<br>맡기세요</h1>
+            <p>한국은행, 아모레퍼시픽, SKT 등 대기업 프로젝트를 성공적으로 수행한 경험을 바탕으로,
+               귀사의 클라우드 전환과 최적화를 위한 맞춤 솔루션을 제안합니다.</p>
+            <div class="hero-cta-group">
+                <a href="#contact-section" class="btn-white">
+                    <i class="fas fa-calendar-check"></i> 무료 30분 상담 예약
+                </a>
+                <a href="#services" class="btn-ghost">
+                    <i class="fas fa-arrow-down"></i> 서비스 살펴보기
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">컨설팅 서비스</h2>
+                <p class="section-subtitle">실무 경험에 기반한 4가지 핵심 서비스를 제공합니다</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon icon-blue"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <h3>클라우드 마이그레이션 컨설팅</h3>
+                    <p>On-Premise 환경에서 AWS, Azure, GCP로의 대규모 마이그레이션을 계획부터 실행까지 지원합니다. 7R 전략(Rehost, Replatform, Refactor 등)을 적용하여 최적의 마이그레이션 경로를 설계합니다.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> 마이그레이션 평가 및 전략 수립</li>
+                        <li><i class="fas fa-check-circle"></i> 워크로드 분석 및 우선순위 결정</li>
+                        <li><i class="fas fa-check-circle"></i> 다운타임 최소화 전략</li>
+                        <li><i class="fas fa-check-circle"></i> 마이그레이션 후 최적화</li>
+                    </ul>
+                    <div class="service-ref"><strong>레퍼런스:</strong> 아모레퍼시픽 On-Premise to AWS 전환 (SA 역할)</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon icon-green"><i class="fas fa-project-diagram"></i></div>
+                    <h3>멀티클라우드 아키텍처 설계</h3>
+                    <p>AWS, Azure, GCP를 조합한 최적의 멀티클라우드 아키텍처를 설계합니다. 비용 효율성, 가용성, 보안 요구사항을 종합적으로 고려한 엔터프라이즈급 설계를 제공합니다.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> 멀티클라우드 전략 컨설팅</li>
+                        <li><i class="fas fa-check-circle"></i> 고가용성 아키텍처 설계</li>
+                        <li><i class="fas fa-check-circle"></i> 비용 최적화 분석</li>
+                        <li><i class="fas fa-check-circle"></i> 보안 및 컴플라이언스 설계</li>
+                    </ul>
+                    <div class="service-ref"><strong>레퍼런스:</strong> 한국은행 CBDC 클라우드 인프라 설계</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon icon-orange"><i class="fas fa-infinity"></i></div>
+                    <h3>DevSecOps 파이프라인 구축</h3>
+                    <p>Kubernetes, Docker, Terraform을 활용한 CI/CD 파이프라인과 컨테이너 기반 인프라를 구축합니다. 보안이 내장된 자동화 워크플로우를 설계합니다.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Kubernetes 클러스터 설계 및 운영</li>
+                        <li><i class="fas fa-check-circle"></i> Terraform IaC 파이프라인 구축</li>
+                        <li><i class="fas fa-check-circle"></i> GitLab CI/CD 자동화</li>
+                        <li><i class="fas fa-check-circle"></i> 보안 스캔 및 모니터링 통합</li>
+                    </ul>
+                    <div class="service-ref"><strong>레퍼런스:</strong> SKT Tdeal AWS Terraform 구축, MOIM 메타버스 DevOps</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon icon-pink"><i class="fas fa-database"></i></div>
+                    <h3>Oracle DB 최적화 & 마이그레이션</h3>
+                    <p>13년의 Oracle 전문 경험과 OCP 자격을 바탕으로, Oracle 데이터베이스 성능 최적화 및 클라우드 DB로의 마이그레이션을 지원합니다.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Oracle RAC/ASM 구축 및 최적화</li>
+                        <li><i class="fas fa-check-circle"></i> Oracle → AWS RDS/Aurora 마이그레이션</li>
+                        <li><i class="fas fa-check-circle"></i> ZDLRA 백업 솔루션 구축</li>
+                        <li><i class="fas fa-check-circle"></i> 데이터베이스 튜닝 및 성능 분석</li>
+                    </ul>
+                    <div class="service-ref"><strong>레퍼런스:</strong> 신한DS, KB카드, 국민연금, 수협 ZDLRA 구축/운영</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-header" style="text-align:center;">
+                <h2 class="section-title" style="font-size:2rem;font-weight:700;color:var(--text-primary);margin-bottom:0.75rem;">컨설팅 프로세스</h2>
+                <p class="section-subtitle" style="color:var(--text-secondary);font-size:1.05rem;">체계적인 5단계 프로세스로 최적의 결과를 보장합니다</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h4>무료 상담</h4>
+                    <p>현재 환경과 목표를 파악하는 30분 무료 상담</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h4>현황 분석</h4>
+                    <p>기존 인프라 및 워크로드 상세 분석</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h4>아키텍처 설계</h4>
+                    <p>최적의 클라우드 아키텍처 설계 및 전략 수립</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h4>구축 & 전환</h4>
+                    <p>단계별 마이그레이션 실행 및 인프라 구축</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <h4>운영 지원</h4>
+                    <p>안정적인 운영을 위한 기술 지원 및 최적화</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients -->
+    <section class="clients-section">
+        <div class="container">
+            <div class="section-header" style="text-align:center;">
+                <h2 class="section-title" style="font-size:2rem;font-weight:700;color:var(--text-primary);margin-bottom:0.75rem;">주요 프로젝트 레퍼런스</h2>
+                <p class="section-subtitle" style="color:var(--text-secondary);font-size:1.05rem;">금융, 통신, 유통, 국방 등 다양한 산업군의 프로젝트를 수행했습니다</p>
+            </div>
+            <div class="clients-grid">
+                <div class="client-item"><i class="fas fa-university"></i> 한국은행</div>
+                <div class="client-item"><i class="fas fa-building"></i> 아모레퍼시픽</div>
+                <div class="client-item"><i class="fas fa-broadcast-tower"></i> SKT</div>
+                <div class="client-item"><i class="fas fa-server"></i> SK C&C</div>
+                <div class="client-item"><i class="fas fa-hard-hat"></i> SK건설</div>
+                <div class="client-item"><i class="fas fa-flask"></i> SK이노베이션</div>
+                <div class="client-item"><i class="fas fa-credit-card"></i> 신한DS / KB카드</div>
+                <div class="client-item"><i class="fas fa-piggy-bank"></i> 국민연금</div>
+                <div class="client-item"><i class="fas fa-anchor"></i> 수협</div>
+                <div class="client-item"><i class="fas fa-shield-alt"></i> 해군 C4I (KNCCS)</div>
+                <div class="client-item"><i class="fas fa-home"></i> 주택금융공사</div>
+                <div class="client-item"><i class="fas fa-globe"></i> 메타넷</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing-section">
+        <div class="container">
+            <div class="section-header" style="text-align:center;">
+                <h2 class="section-title" style="font-size:2rem;font-weight:700;color:var(--text-primary);margin-bottom:0.75rem;">컨설팅 요금</h2>
+                <p class="section-subtitle" style="color:var(--text-secondary);font-size:1.05rem;">프로젝트 규모에 맞는 최적의 플랜을 선택하세요</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>기본 상담</h3>
+                    <div class="price">무료 / 30분</div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 현재 환경 진단</li>
+                        <li><i class="fas fa-check"></i> 클라우드 전환 방향 제안</li>
+                        <li><i class="fas fa-check"></i> 예상 비용/일정 개요</li>
+                        <li><i class="fas fa-check"></i> Q&A</li>
+                    </ul>
+                    <a href="#contact-section" class="btn btn-primary" style="width:100%;text-align:center;">
+                        무료 상담 신청
+                    </a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">추천</div>
+                    <h3>표준 컨설팅</h3>
+                    <div class="price">별도 협의</div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 기본 상담 포함</li>
+                        <li><i class="fas fa-check"></i> 상세 인프라 분석 리포트</li>
+                        <li><i class="fas fa-check"></i> 아키텍처 설계 문서</li>
+                        <li><i class="fas fa-check"></i> 마이그레이션 전략 및 로드맵</li>
+                        <li><i class="fas fa-check"></i> 1개월 기술 지원</li>
+                    </ul>
+                    <a href="#contact-section" class="btn btn-primary" style="width:100%;text-align:center;">
+                        상담 신청
+                    </a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>프리미엄</h3>
+                    <div class="price">별도 협의</div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 표준 컨설팅 전체 포함</li>
+                        <li><i class="fas fa-check"></i> 직접 구축 및 마이그레이션 수행</li>
+                        <li><i class="fas fa-check"></i> DevOps 파이프라인 구축</li>
+                        <li><i class="fas fa-check"></i> 운영 교육 (팀 대상)</li>
+                        <li><i class="fas fa-check"></i> 3개월 운영 지원</li>
+                    </ul>
+                    <a href="#contact-section" class="btn btn-primary" style="width:100%;text-align:center;">
+                        상담 신청
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact-section" class="consult-contact">
+        <div class="container">
+            <div class="section-header" style="text-align:center;">
+                <h2 class="section-title" style="font-size:2rem;font-weight:700;color:var(--text-primary);margin-bottom:0.75rem;">컨설팅 문의</h2>
+                <p class="section-subtitle" style="color:var(--text-secondary);font-size:1.05rem;">무료 30분 상담을 통해 최적의 클라우드 전략을 제안드립니다</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info-card">
+                    <h3>연락처 정보</h3>
+                    <p>클라우드 마이그레이션, 아키텍처 설계, DevOps 등 어떤 주제든 편하게 문의해주세요. 빠른 시일 내에 답변드리겠습니다.</p>
+                    <div class="contact-info-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>golreas@naver.com</span>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-phone"></i>
+                        <span>010-7413-5650</span>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fab fa-threads"></i>
+                        <span>@musma_ai (Threads)</span>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>서울 전역 / 원격 가능</span>
+                    </div>
+                    <div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.2);">
+                        <p style="font-size:0.9rem;opacity:0.85;"><strong>보유 자격증 9개:</strong><br>
+                        AWS SA Associate, AWS DB Specialty, GCP Professional Architect, OCI Architect, OCP, Claude Code in Action, SCSECA, SCNA, CSA</p>
+                    </div>
+                </div>
+                <div class="consult-form">
+                    <h3>무료 상담 신청</h3>
+                    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" name="name" placeholder="이름 / 회사명" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" placeholder="이메일" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="tel" name="phone" placeholder="연락처">
+                            </div>
+                            <div class="form-group">
+                                <select name="service" required>
+                                    <option value="" disabled selected>서비스 선택</option>
+                                    <option value="migration">클라우드 마이그레이션</option>
+                                    <option value="architecture">멀티클라우드 아키텍처 설계</option>
+                                    <option value="devops">DevSecOps 파이프라인 구축</option>
+                                    <option value="oracle">Oracle DB 최적화/마이그레이션</option>
+                                    <option value="other">기타</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" rows="5" placeholder="프로젝트에 대해 간략히 설명해주세요 (현재 환경, 목표, 일정 등)" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width:100%;text-align:center;padding:14px;">
+                            <i class="fas fa-paper-plane"></i> 무료 상담 신청하기
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">박상준</span>
+                    <p class="footer-description">멀티클라우드 전문성으로 엔터프라이즈 인프라의 미래를 설계합니다</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>빠른 링크</h4>
+                        <ul>
+                            <li><a href="index.html">홈</a></li>
+                            <li><a href="index.html#about">소개</a></li>
+                            <li><a href="index.html#expertise">전문분야</a></li>
+                            <li><a href="index.html#projects">프로젝트</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>서비스</h4>
+                        <ul>
+                            <li><a href="consulting.html">클라우드 컨설팅</a></li>
+                            <li><a href="courses.html">온라인 강의</a></li>
+                            <li><a href="blog.html">기술 블로그</a></li>
+                            <li><a href="index.html#contact">문의하기</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>소셜 미디어</h4>
+                        <div class="social-links">
+                            <a href="mailto:golreas@naver.com" class="social-link"><i class="fas fa-envelope"></i></a>
+                            <a href="tel:010-7413-5650" class="social-link"><i class="fas fa-phone"></i></a>
+                            <a href="https://www.threads.com/@musma_ai" class="social-link" target="_blank" rel="noopener"><i class="fab fa-threads"></i></a>
+                            <a href="blog.html" class="social-link"><i class="fas fa-blog"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 박상준. All rights reserved. | <a href="consulting.html">컨설팅</a> | <a href="courses.html">강의</a> | <a href="blog.html">블로그</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="back-to-top"><i class="fas fa-chevron-up"></i></button>
+
+    <script>
+        (function() {
+            var navbar = document.getElementById('navbar');
+            var hamburger = document.getElementById('hamburger');
+            var navMenu = document.getElementById('nav-menu');
+            var backToTop = document.getElementById('back-to-top');
+
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    navbar.classList.add('scrolled');
+                    backToTop.classList.add('visible');
+                } else {
+                    navbar.classList.remove('scrolled');
+                    backToTop.classList.remove('visible');
+                }
+            });
+
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            document.querySelectorAll('.nav-link').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            backToTop.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    var target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
